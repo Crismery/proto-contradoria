@@ -1,0 +1,115 @@
+<div mat-dialog-title style="text-align: center;">
+    <h1>Mantenimiento</h1>
+</div>
+
+<form [formGroup]="rForm" (ngSubmit)="onSubmit()">
+    <div mat-dialog-content class="content">
+        <div class="row center">
+            <mat-form-field appearance="outline">
+                <mat-label>Tipo de Mantenimiento</mat-label>
+                <mat-select placeholder="Seleccione un tipo de Mantenimiento" formControlName="TipoM">
+                    <mat-option>Ninguno</mat-option>
+                    <mat-option value="Fisico">Fisico</mat-option>
+                    <mat-option value="Logico">Logico</mat-option>
+                    <mat-option value="Ambos">Ambos</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <div class="row">
+            <ng-container *ngIf="rForm.value.TipoM === 'Logico'">
+                <mat-checkbox  [checked]="rForm.value.COS === 'Si'" (change)="rForm.value.COS = $event.checked ? 'Si' : 'No'">Cambio de OS</mat-checkbox>
+            </ng-container>
+
+            <ng-container *ngIf="rForm.value.TipoM === 'Logico'">
+                <mat-checkbox [checked]="rForm.value.Desfrag === 'Si'" (change)="rForm.value.Desfrag = $event.checked ? 'Si' : 'No'">Desfragmentacion</mat-checkbox>
+            </ng-container>
+            <ng-container *ngIf="rForm.value.TipoM === 'Fisico'">
+                <mat-checkbox formControlName="ap2" (change)="rForm.value.Memoria = $event.checked ? 'Si' : 'No'">Memoria</mat-checkbox>
+            </ng-container>
+            <ng-container *ngIf="rForm.value.TipoM === 'Fisico'">
+                <mat-checkbox formControlName="ap" (change)="rForm.value.Almacenamiento = $event.checked ? 'Si' : 'No'"labelPosition="before">Disco</mat-checkbox>
+            </ng-container>
+        </div>
+
+        <div class="row">
+            <ng-container *ngIf="rForm.value.TipoM === 'Logico'">
+                <mat-form-field appearance="outline">
+                    <mat-label>Actualizacion</mat-label>
+                    <mat-select placeholder="Seleccione un tipo de Actualizacion" formControlName="Actualizacion">
+                        <mat-option>Ninguno</mat-option>
+                        <mat-option value="OS">Sistema Operativo</mat-option>
+                        <mat-option value="Software">Software</mat-option>
+                        <mat-option value="Otros">Otros</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </ng-container>
+            <ng-container *ngIf="rForm.value.ap2 && rForm.value.TipoM=== 'Fisico'">
+                <mat-form-field appearance="outline">
+                    <mat-label>Memoria</mat-label>
+                    <mat-select placeholder="Seleccione un tipo de Actualizacion" formControlName="Memory">
+                        <mat-option>Ninguno</mat-option>
+                        <mat-option value="8Gb">8Gb</mat-option>
+                        <mat-option value="16Gb">16Gb</mat-option>
+                        <mat-option value="32Gb">32Gb</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </ng-container>
+
+            <ng-container *ngIf="rForm.value.ap &&  rForm.value.TipoM === 'Fisico'">
+                <mat-form-field appearance="outline">
+                    <mat-label>Capacidad</mat-label>
+                    <mat-select placeholder="Seleccione un tipo de Actualizacion" formControlName="Storage">
+                        <mat-option>Ninguno</mat-option>
+                        <mat-option value="256Gb">256Gb</mat-option>
+                        <mat-option value="512Gb">512Gb</mat-option>
+                        <mat-option value="1Tb">1Tb</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </ng-container>
+
+
+            <ng-container *ngIf="rForm.value.Actualizacion && rForm.value.TipoM === 'Logico'">
+                <mat-form-field appearance="outline">
+                    <mat-label>Descripcion</mat-label>
+                    <input matInput type="text" placeholder="ej. Windows 11 H2" formControlName="Descripcion">
+                </mat-form-field>
+            </ng-container>
+
+        </div>
+        <div class="row center">
+            <ng-container *ngIf="rForm.value.ap && rForm.value.TipoM === 'Fisico'">
+                <mat-form-field appearance="outline">
+                    <mat-label>Tipo</mat-label>
+                    <mat-select placeholder="Seleccione un tipo de Actualizacion" formControlName="Type">
+                        <mat-option>Ninguno</mat-option>
+                        <mat-option value="HDD">HDD</mat-option>
+                        <mat-option value="SDD">SDD</mat-option>
+                        <mat-option value="NVMe">NVMe</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </ng-container>
+            <ng-container *ngIf="rForm.value.TipoM === 'Fisico'">
+
+
+                <mat-checkbox [checked]="rForm.value.Cleaning === 'Si'" (change)="rForm.value.Cleaning = $event.checked ? 'Si' : 'No'">Limpieza</mat-checkbox>
+
+            </ng-container>
+        </div>
+
+
+
+
+
+
+    </div>
+    <div>
+        <!--mat-label (ngSubmit) = "let i form data"-->
+
+    </div>
+    <div mat-dialog-actions class="action-btns">
+        <button style="margin: 10px;" mat-raised-button color="accent" type="submit">{{data ? 'Actualizar' :
+            'Guardar'}}</button>
+        <button mat-raised-button type="button" color="warn" [mat-dialog-close]="true">Cancelar</button>
+    </div>
+</form>

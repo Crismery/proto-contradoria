@@ -1,0 +1,109 @@
+<div mat-dialog-title>
+    <h1>{{data ? 'Editar': 'Añadir'}} Registro/s</h1>
+</div>
+
+<form [formGroup]="rForm" (ngSubmit)="onSubmit()" >
+       <div mat-dialog-content class="content">
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Dispositivo</mat-label>
+                <mat-select  placeholder="Seleccione un Dispositivo" formControlName="Dispositivo"  >
+                    <mat-option value="Desktop">Desktop</mat-option>
+                    <mat-option value="Laptop">Laptop</mat-option>
+                    <mat-option value="Monitor">Monitor</mat-option>
+                    <mat-option value="Telefono">Telefono</mat-option>
+                    <mat-option value="Printer">Printer</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Modelo</mat-label>
+                <input matInput type="text" placeholder="ej. Pro Desk" formControlName="Modelo">
+            </mat-form-field>
+        </div>
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Serial</mat-label>
+                <input matInput type="text" placeholder="ej. 1xcs45" formControlName="Serial">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Placa</mat-label>
+                <input matInput type="text" placeholder="ej. 1234" formControlName="Placa">
+            </mat-form-field>
+        </div>
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Bienes Nacionales</mat-label>
+                <input matInput type="text" placeholder="ej. 123456" formControlName="BN">
+            </mat-form-field>
+
+            <ng-container *ngIf = "rForm.value.Dispositivo === 'Monitor'">
+                <mat-form-field appearance="outline">
+                    <mat-label>Tamaño</mat-label>
+                    <mat-select placeholder="Seleccione un Tamaño" formControlName="Size" >
+                        <mat-option value="17">17''</mat-option>
+                        <mat-option value="24">24''</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </ng-container>
+            <ng-container *ngIf = "rForm.value.Dispositivo === 'Desktop' || rForm.value.Dispositivo === 'Laptop'">
+                <mat-form-field appearance="outline">
+                    <mat-label>OS</mat-label>
+                    <mat-select placeholder="Seleccione un OS" formControlName="OS" >
+                        <mat-option value="Windows_10">Windows 10</mat-option>
+                        <mat-option value="Windows_11">Windows 11</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </ng-container>
+        </div>
+        <div class="row">
+            <ng-container *ngIf = "rForm.value.Dispositivo === 'Desktop' || rForm.value.Dispositivo === 'Laptop'">
+                <mat-form-field appearance="outline">
+                    <mat-label>CPU</mat-label>
+                    <mat-select placeholder="Seleccione un CPU" formControlName="CPU" >
+                        <mat-option value="i3">i3</mat-option>
+                        <mat-option value="i5">i5</mat-option>
+                        <mat-option value="i7">i7</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </ng-container>
+            <ng-container *ngIf = "rForm.value.Dispositivo === 'Desktop' || rForm.value.Dispositivo === 'Laptop'">
+                <mat-form-field appearance="outline">
+                    <mat-label>Memoria RAM</mat-label>
+                    <mat-select placeholder="Seleccione un Memory" formControlName="Memory" >
+                        <mat-option value="8Gb">8Gb</mat-option>
+                        <mat-option value="16Gb">16Gb</mat-option>
+                        <mat-option value="32Gb">32Gb</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </ng-container>
+
+        </div>
+
+        <div class="row">
+            <ng-container *ngIf = "rForm.value.Dispositivo === 'Desktop' || rForm.value.Dispositivo === 'Laptop'">
+                <mat-form-field appearance="outline">
+                    <mat-label>Almacenamiento</mat-label>
+                    <mat-select placeholder="Seleccione un Storage" formControlName="Storage" >
+                        <mat-option value="256Gb">256Gb</mat-option>
+                        <mat-option value="512Gb">512Gb</mat-option>
+                        <mat-option value="1Tb">1Tb</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </ng-container>
+
+        </div>
+
+
+
+    </div>
+    <div>
+        <!--mat-label (ngSubmit) = "let i form data"-->
+
+    </div>
+    <div mat-dialog-actions class="action-btns">
+        <button style="margin: 10px;" mat-raised-button color="accent" type="submit">{{data ? 'Actualizar' : 'Guardar'}}</button>
+        <button mat-raised-button type="button" color="warn" [mat-dialog-close]="true">Cancelar</button>
+    </div>
+</form>
+
+

@@ -1,0 +1,68 @@
+<mat-toolbar color="primary">
+    <span>Descargo</span>
+    <span class="example-spacer"></span>
+    <button mat-raised-button color="accent" (click)="addDialog()">Descargo de equipos</button>
+</mat-toolbar>
+<div class="mainbody">
+    
+
+    <div>
+    <mat-form-field aria-haspopup="outline">
+        <mat-label>Filtro</mat-label>
+        <input matInput (keyup)="applyFilter($event)"placeholder="ej. Laptop" #input>
+    </mat-form-field>
+    </div>
+
+    <div class="table-container">
+        <table mat-table [dataSource]="dataSource" matSort>
+            <ng-container matColumnDef="Dispositivo">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Dispositivo</th>
+                <td mat-cell *matCellDef="let row">{{row.Dispositivo}}</td>
+            </ng-container>
+            <ng-container matColumnDef="Modelo">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Modelo</th>
+                <td mat-cell *matCellDef="let row">{{row.Modelo}}</td>
+            </ng-container>
+            <ng-container matColumnDef="Nombre_Equipo">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Nombre Equipo</th>
+                <td mat-cell *matCellDef="let row">{{row.Nombre_Equipo}}</td>
+            </ng-container>
+            <ng-container matColumnDef="OS">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>OS</th>
+                <td mat-cell *matCellDef="let row">{{row.OS}}</td>
+            </ng-container>
+            <ng-container matColumnDef="CPU">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>CPU</th>
+                <td mat-cell *matCellDef="let row">{{row.CPU}}</td>
+            </ng-container>
+            <ng-container matColumnDef="Memory">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Memoria</th>
+                <td mat-cell *matCellDef="let row">{{row.Memory}}</td>
+            </ng-container>
+            <ng-container matColumnDef="Storage">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Almacenamiento</th>
+                <td mat-cell *matCellDef="let row">{{row.Storage}}</td>
+            </ng-container>
+            <ng-container matColumnDef="Size">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Tamaño</th>
+                <td mat-cell *matCellDef="let row">{{row.Size}}</td>
+            </ng-container>
+            <ng-container matColumnDef="Serial">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Serial</th>
+                <td mat-cell *matCellDef="let row">{{row.Serial}}</td>
+            </ng-container>
+            <ng-container matColumnDef="Departamento">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Departamento</th>
+                <td mat-cell *matCellDef="let row">{{row.Departamento}}</td>
+            </ng-container>
+            
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+            <tr class="mat-row" *matNoDataRow>
+                <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+            </tr>
+        </table>
+        <mat-paginator [pageSizeOptions]="[ 5, 10, 25, 100]" aria-label="Seleccione el numero de registros"></mat-paginator>
+    </div>
+</div>

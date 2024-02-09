@@ -1,0 +1,29 @@
+.row{
+    display: flex;
+    justify-content: center;
+    row-gap: 10px;
+    
+    
+}
+.row mat-form-field + mat-form-field{
+    margin-left: 8px;
+}
+.mat-form-field {
+    width: 100%;    
+}
+.mat-hint {
+    margin: 1px;
+}
+.action-btns {
+    float: right;
+    margin-right: 10px;
+}
+
+.action-btns button {
+    padding: 20px;
+}
+.center {
+    text-align: center;
+    margin-top: 40px;
+
+}

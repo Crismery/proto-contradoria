@@ -1,0 +1,52 @@
+<div mat-dialog-title>
+    <h1>{{data ? 'Editar': 'Añadir'}} Registro</h1>
+</div>
+
+<form [formGroup]="rForm" (ngSubmit)="onSubmit()">
+    <div mat-dialog-content class="content">
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Dispositivo</mat-label>
+                <input matInput type="text" placeholder="ej. Laptop" formControlName="Dispositivo">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Modelo</mat-label>
+                <input matInput type="text" placeholder="ej. Pro Desk" formControlName="Modelo">
+            </mat-form-field>
+        </div>
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Serial</mat-label>
+                <input matInput type="text" placeholder="ej. 1xcs45" formControlName="Serial">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Placa</mat-label>
+                <input matInput type="text" placeholder="ej. 1234" formControlName="Placa">
+            </mat-form-field>
+        </div>
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Bienes Nacionales</mat-label>
+                <input matInput type="text" placeholder="ej. 123456" formControlName="BN">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Usuario</mat-label>
+                <input matInput type="text" placeholder="ej. Juan de los Palotes" formControlName="Usuario">
+            </mat-form-field>
+        </div>
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Departamento</mat-label>
+                <input matInput type="text" placeholder="ej. Tecnologia" formControlName="Departamento">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Mantenimiento</mat-label>
+                <input matInput type="text" placeholder="ej. Actualizacion de disco." formControlName="Mantenimiento">
+            </mat-form-field>
+        </div>
+    </div>
+    <div mat-dialog-actions class="action-btns">
+        <button style="margin: 10px;" mat-raised-button color="accent" type="submit">{{data ? 'Actualizar' : 'Guardar'}}</button>
+        <button mat-raised-button type="button" color="warn" [mat-dialog-close]="false">Cancelar</button>
+    </div>
+</form>

@@ -1,0 +1,83 @@
+<div id = "app">
+<div id="side" class= "sidenav" [style]="navstyle">
+  <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
+  <nav class="navbar bg-primary shift">
+
+    <ul class="navbar-nav mr-auto" routerLinkActive="active">
+      <!--li class="nav-item">
+        <a href="/home" class="nav-link"  routerLink="/dashboard/home">Home </a>
+      </li>
+      <li class="nav-item" *ngIf="showAdminBoard">
+        <a href="/admin" class="nav-link" routerLink="/dashboard/admin">Admin Board</a>
+      </li>
+      <li class="nav-item">
+        <a href="/user" class="nav-link" *ngIf="isLoggedIn" routerLink="/dashboard/user">User</a>
+      </li-->
+      <li class="nav-item">
+        <a href="/reg" class="nav-link" *ngIf="isLoggedIn" routerLink="/dashboard/reg">Registro</a>
+      </li>
+      <li class="nav-item">
+        <a href="/entrada" class="nav-link" *ngIf="isLoggedIn" routerLink="/dashboard/entrada">Entrada</a>
+      </li>
+      <li class="nav-item">
+        <a href="/asignacion" class="nav-link" *ngIf="isLoggedIn" routerLink="/dashboard/asignacion">Asignacion</a>
+      </li>
+      <li class="nav-item">
+        <a href="/almacen" class="nav-link" *ngIf="isLoggedIn" routerLink="/dashboard/almacen">Almacen</a>
+      </li>
+      <li class="nav-item">
+        <a href="/descargo" class="nav-link" *ngIf="isLoggedIn" routerLink="/dashboard/descargo">Descargo</a>
+      </li>
+      <li class="nav-item">
+        <a href="/descargo_bn" class="nav-link" *ngIf="isLoggedIn" routerLink="/dashboard/descargo_bn">Descargo BN</a>
+      </li>
+      <li class="nav-item">
+        <a href="/mantenimiento" class="nav-link" *ngIf="isLoggedIn" routerLink="/dashboard/mantenimiento">Mantenimiento</a>
+      </li>
+      <li class="nav-item">
+        <a href="/mantenimientos" class="nav-link" *ngIf="isLoggedIn" routerLink="/dashboard/mantenimientos">Ver Mantenimientos</a>
+      </li>
+      <li class="nav-item">
+        <a href="/reporte" class="nav-link" *ngIf="isLoggedIn" routerLink="/dashboard/reporte">Reporte</a>
+      </li>
+      <li class="nav-item">
+        <a href="/solicitudes" class="nav-link" *ngIf="isLoggedIn" routerLink="/dashboard/solicitudes">Solicitudes</a>
+      </li>
+    </ul>
+
+ 
+  </nav>
+  
+
+
+
+</div>
+<nav class="navbar navbar-expand navbar-dark bg-primary shift">
+<span class="navbar-brand" style="font-size:30px;cursor:pointer" (click)="openNav()">&#9776;</span>
+  <a href="/dashboard/home" routerLink="/dashboard/home" class = "navbar-brand"> <img src="assets/images/Captura.PNG" width="60" height="60">
+    
+     Contraloria General de la Republica</a>
+
+<ul class="navbar-nav ml-auto" *ngIf="!isLoggedIn">
+  <li class="nav-item">
+    <a href="/register" class="nav-link" routerLink="/dashboard/register">Sign Up</a>
+  </li>
+  <li class="nav-item">
+    <a href="/login" class="nav-link" routerLink="/login">Login</a>
+  </li>
+</ul>
+
+<ul class="navbar-nav ml-auto" *ngIf="isLoggedIn">
+  <li class="nav-item">
+    <a href="/profile" class="nav-link" routerLink="/dashboard/profile">{{ username }}</a>
+  </li>
+  <li class="nav-item">
+    <a href class="nav-link" (click)="logout()">LogOut</a>
+  </li>
+</ul>
+
+</nav>
+<div class="container">
+  <router-outlet></router-outlet>
+</div>
+</div>

@@ -1,0 +1,6 @@
+export * from './add.component'
+export * from './edit.component'
+export * from './reg.component'
+export * from './entrada.component'
+export * from './asign.component'
+export * from './asigning.component'

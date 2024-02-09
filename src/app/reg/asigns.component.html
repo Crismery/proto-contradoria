@@ -1,0 +1,40 @@
+<div mat-dialog-title>
+    <h1>{{data ? 'Editar': 'Añadir'}} Registro/s</h1>
+</div>
+
+<form [formGroup]="rForm" (ngSubmit)="onSubmit()" >
+       <div mat-dialog-content class="content">
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>ID Usuario</mat-label>
+                <input matInput type="text" placeholder="ej. 1234567" formControlName="ID_Usuario">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Usuario</mat-label>
+                <input matInput type="text" placeholder="ej. Juan de los Palotes" formControlName="Usuario">
+            </mat-form-field>
+        </div>
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Departamento</mat-label>
+                <mat-select  placeholder="Seleccione un Derpartamento" formControlName="Departamento"  >
+                    <mat-option value="Administrativo">Administrativo</mat-option>
+                    <mat-option value="Contabilidad">Contabilidad</mat-option>
+                    <mat-option value="RRHH">RRHH</mat-option>
+                    <mat-option value="Transporte">Transporte</mat-option>
+                    <mat-option value="Tecnologia">Tecnologia</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+
+
+    </div>
+    <div mat-dialog-actions class="action-btns">
+        <button style="margin: 10px;" mat-raised-button color="accent" type="submit">{{data ? 'Actualizar' : 'Guardar'}}</button>
+        <button mat-raised-button type="button" color="warn" [mat-dialog-close]="false">Cancelar</button>
+    </div>
+</form>
+
+

@@ -1,0 +1,98 @@
+<div class="center">
+    <div mat-dialog-title style="margin-bottom: 30px;">
+        <h1>Reporte</h1>
+    </div>
+    <form [formGroup]="rForm" (ngSubmit)="onSubmit($event.submitter.name)">
+        <div class="content">
+            <div class="row">
+
+                <mat-label>Buscar por: </mat-label>
+                <mat-checkbox formControlName="DepartamentoL">Departamento</mat-checkbox>
+                <mat-checkbox formControlName="DispositivoL">Dispositivo</mat-checkbox>
+                <mat-checkbox formControlName="ModeloL">Modelo</mat-checkbox>
+
+            </div>
+            <div class="row">
+                <ng-container *ngIf="rForm.value.DepartamentoL">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Departamento</mat-label>
+                        <mat-select placeholder="Seleccione un Dispositivo" formControlName="Departamento">
+                            <mat-option>Ninguno</mat-option>
+                            <mat-option value="Almacen">Almacen</mat-option>
+                            <mat-option value="Administrativo">Administrativo</mat-option>
+                            <mat-option value="RRHH">RRHH</mat-option>
+                            <mat-option value="Tecnologia">Tecnologia</mat-option>
+                            <mat-option value="Descargo">Descargo</mat-option>
+                            <mat-option value="Descargo BN">Descargo BN</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </ng-container>
+                <ng-container *ngIf="rForm.value.DispositivoL">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Dispositivo</mat-label>
+                        <mat-select placeholder="Seleccione un Departamento" formControlName="Dispositivo">
+                            <mat-option>Ninguno</mat-option>
+                            <mat-option value="Desktop">Desktop</mat-option>
+                            <mat-option value="Laptop">Laptop</mat-option>
+                            <mat-option value="Monitor">Monitor</mat-option>
+                            <mat-option value="Telefono">Telefono</mat-option>
+                            <mat-option value="Printer">Printer</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </ng-container>
+                <ng-container *ngIf="rForm.value.ModeloL">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Modelo</mat-label>
+                        <mat-select placeholder="Seleccione un Modelo" formControlName="Modelo">
+                            <mat-option>Ninguno</mat-option>
+                            <mat-option value="Lg">Lg</mat-option>
+                            <mat-option value="Hp">Hp</mat-option>
+                            <mat-option value="Dell">Dell</mat-option>
+                            <mat-option value="Pro Desk">Pro Desk</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </ng-container>
+            </div>
+
+
+
+        </div>
+        <div>
+            <ng-container *ngIf="rForm.value.DepartamentoL && !rForm.value.DispositivoL && !rForm.value.ModeloL">
+                <div mat-dialog-actions class="action-btns">
+                    <button style="margin: 10px;" mat-raised-button color="accent" type="submit" name="D">Buscar</button>
+                </div>
+            </ng-container>
+            <ng-container *ngIf="!rForm.value.DepartamentoL && rForm.value.DispositivoL && !rForm.value.ModeloL">
+                <div mat-dialog-actions class="action-btns">
+                    <button style="margin: 10px;" mat-raised-button color="accent" type="submit" name="Dis">Buscar</button>
+                </div>
+            </ng-container>
+            <ng-container *ngIf="!rForm.value.DepartamentoL && !rForm.value.DispositivoL && rForm.value.ModeloL">
+                <div mat-dialog-actions class="action-btns">
+                    <button style="margin: 10px;" mat-raised-button color="accent" type="submit" name="Mod">Buscar</button>
+                </div>
+            </ng-container>
+            <ng-container *ngIf="rForm.value.DepartamentoL && rForm.value.DispositivoL && !rForm.value.ModeloL">
+                <div mat-dialog-actions class="action-btns">
+                    <button style="margin: 10px;" mat-raised-button color="accent" type="submit" name="DDis">Buscar</button>
+                </div>
+            </ng-container>
+            <ng-container *ngIf="rForm.value.DepartamentoL && !rForm.value.DispositivoL && rForm.value.ModeloL">
+                <div mat-dialog-actions class="action-btns">
+                    <button style="margin: 10px;" mat-raised-button color="accent" type="submit" name="DMod">Buscar</button>
+                </div>
+            </ng-container>
+            <ng-container *ngIf="!rForm.value.DepartamentoL && rForm.value.DispositivoL && rForm.value.ModeloL">
+                <div mat-dialog-actions class="action-btns">
+                    <button style="margin: 10px;" mat-raised-button color="accent" type="submit" name="DisMod">Buscar</button>
+                </div>
+            </ng-container>
+            <ng-container *ngIf="rForm.value.DepartamentoL && rForm.value.DispositivoL && rForm.value.ModeloL">
+                <div mat-dialog-actions class="action-btns">
+                    <button style="margin: 10px;" mat-raised-button color="accent" type="submit" name="DDisMod">Buscar</button>
+                </div>
+            </ng-container>
+        </div>
+    </form>
+</div>
